@@ -1,8 +1,5 @@
 FROM php:7.1-fpm
 
-ENV BUILDDEPS libpng-dev libjpeg-dev libmcrypt-dev libxml2-dev libfreetype6-dev libzip-dev
-ENV MODULES gd mbstring mysqli mcrypt pdo_mysql soap zip
-
 # Install dependecies and clean the cache
 RUN apt-get update
 RUN apt-get install -y ${BUILDDEPS} --no-install-recommends

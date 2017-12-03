@@ -3,7 +3,7 @@ server {
     listen 80;
     listen [::]:80;
     server_name localhost;
-    root /var/www/html/web;
+    root /var/www/html/$ROOT;
     index index.php index.html;
     charset utf-8;
 
