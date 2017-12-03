@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  php:
+    build: configs/php-7.1
+    volumes:
+      - ./src:/var/www/html
+
+  web:
+    image: nginx:latest
+    ports:
+      - "8888:80"
+    volumes:
+      - ./configs/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./src:/var/www/html:delegated
+      - ./logs:/var/log/nginx
+    links:
+      - php
