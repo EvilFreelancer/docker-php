@@ -6,19 +6,20 @@ Small collection of scripts and configs for begin.
 
 ## How to use
 
-Copy the ENV example
+Copy the ENV example:
 
     cp .env.example .env
 
-Start the build
+Build the docker image:
 
-    docker-compose bild
+    docker-compose build
 
-Run the image
+Now you can work with your image:
 
-    docker-compose up -d
+    docker-compose up -d    # Start container in background mode
+    docker-compose down     # Stop containers and networks
 
 ## Some links
 
-https://docs.docker.com/compose/compose-file/compose-versioning/#compatibility-matrix
-https://docs.docker.com/compose/install/#install-compose
+* How to install latest [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
+* Matrix of [Compose versions](https://docs.docker.com/compose/compose-file/compose-versioning/#compatibility-matrix)

@@ -1,5 +1,8 @@
 FROM php:7.1-fpm
 
+ARG BUILDDEPS
+ARG MODULES
+
 # Install dependecies and clean the cache
 RUN apt-get update
 RUN apt-get install -y ${BUILDDEPS} --no-install-recommends

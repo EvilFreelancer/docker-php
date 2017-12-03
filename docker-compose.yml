@@ -2,7 +2,6 @@ version: '3.1'
 
 services:
   php:
-    image: configs/php-${PHP}
     build:
       context: configs/php-${PHP}
       args:
@@ -11,14 +10,13 @@ services:
     volumes:
       - ./src:/var/www/html
 
-  web:
+  nginx:
     image: nginx:latest
     ports:
       - ${PORT}:80
     volumes:
-      - ./configs/nginx.template:/etc/nginx/conf.d/nginx.template
+      - ./configs/nginx.conf:/etc/nginx/conf.d/default.conf:delegated
       - ./src:/var/www/html:delegated
       - ./logs:/var/log/nginx
     links:
       - php
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/nginx.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
