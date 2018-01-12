@@ -1,4 +1,6 @@
 /src/
+/src
 /logs/
 /.idea/
 /.env
+/docker-compose.yml
