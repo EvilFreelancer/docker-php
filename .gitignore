@@ -2,5 +2,6 @@
 /src
 /logs/
 /.idea/
+/database/
 /.env
 /docker-compose.yml

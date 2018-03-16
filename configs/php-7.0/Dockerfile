@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.0-fpm
 
 ENV BUILDDEPS="libpng-dev libjpeg-dev libmcrypt-dev libxml2-dev libfreetype6-dev libcurl4-openssl-dev libxml2-dev libzip-dev libbz2-dev libpq-dev libsqlite3-dev sqlite3"
 ENV MODULES="gd mbstring mysqli mcrypt pgsql pdo_mysql pdo_pgsql pdo_sqlite soap xml curl zip bz2"

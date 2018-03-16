@@ -1,22 +1,42 @@
-version: '3.1'
+version: '2'
 
 services:
   php:
     build:
-      context: configs/php-${PHP}
-      args:
-        BUILDDEPS: ${BUILDDEPS}
-        MODULES: ${MODULES}
+      context: configs/php-7.1
     volumes:
       - ./src:/var/www/html
+    links:
+      - mysql:db
 
   nginx:
     image: nginx:latest
     ports:
-      - ${PORT}:80
+      - 80:80
     volumes:
       - ./configs/nginx.conf:/etc/nginx/conf.d/default.conf:delegated
-      - ./src:/var/www/html:delegated
-      - ./logs:/var/log/nginx
+      - ./app:/var/www/html:delegated
+      - ./logs/nginx:/var/log/nginx
     links:
       - php
+
+  mysql:
+    image: mysql:5.6
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=openvpn-admin
+      - MYSQL_ROOT_PASSWORD=rootrootroot
+      - MYSQL_USER=openvpn
+      - MYSQL_PASSWORD=openvpn_pass
+    volumes:
+      - ./database:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    links:
+      - php
+      - mysql:db
