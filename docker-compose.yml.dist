@@ -46,14 +46,14 @@ services:
 #      - ./databases/postgresql:/var/lib/postgresql/data/pgdata
 #      - ./logs/postgresql:/var/log/postgresql
 
-  mongo:
-    restart: unless-stopped
-    image: mongo:3.6
-    ports:
-      - 27017:27017
-    volumes:
-      - ./databases/mongo:/data/db
-      - ./logs/mongo:/var/log/mongodb
+#  mongo:
+#    restart: unless-stopped
+#    image: mongo:3.6
+#    ports:
+#      - 27017:27017
+#    volumes:
+#      - ./databases/mongo:/data/db
+#      - ./logs/mongo:/var/log/mongodb
 
 #  adminer:
 #    image: adminer
